@@ -1,0 +1,3 @@
+[submodule "djangoTask"]
+	path = djangoTask
+	url = https://github.com/DJTakushi/djangoTask.git
