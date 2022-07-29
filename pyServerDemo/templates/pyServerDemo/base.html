@@ -15,7 +15,7 @@
 
 <body>
   <div class="cover-container d-flex h-100 p-3 mx-auto flex-column containerParticle">
-    <nav class="navbar navbar-expand navbar-light bg-light">
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
       <a class="navbar-brand">pyServerDemo</a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
@@ -37,7 +37,9 @@
       </ul>
     </nav>
       {% block content %}
-      <p>Base class template that is extended for other templates</p>
+      <div class="container-fluid center text-white">
+        <p>Base class template that is extended for other templates</p>
+      </div>
       {% endblock %}
   </div>
   <canvas class="background"></canvas>

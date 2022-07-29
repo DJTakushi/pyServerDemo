@@ -1,22 +1,13 @@
-/* body { */
-/* background-image: linear-gradient(navy,purple); */
-/* } */
 body {
-  /* background-color: red; */
-  /* warm */
-  /* background-image: linear-gradient(to bottom right, rgba(127,0,0,1), rgba(127,127,0,1)); */
-  /* background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)); */
   /* https://www.w3schools.com/css/css3_gradients.asp */
   Height: 100vh;
   /*https://www.reddit.com/r/css/comments/a6g2tx/how_do_i_create_a_gradient_background_that/ */
-  /* background: rgb(2,0,36); */
+  background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
   /* cool gradient generated from https://cssgradient.io/ */
-  --tcb: rgb(2, 0, 36);
+  /* --tcb: rgb(2, 0, 36);
   --cGradient1: rgba(2, 0, 36, 1);
   --cGradient2: rgba(9, 9, 121, 1);
-  --cGradient3: rgba(0, 212, 255, 1);
-  /* background: var(--tcb); */
-  /* background: linear-gradient(-45deg, var(--cGradient1) 0%, var(--cGradient2) 35%, var(--cGradient3) 100%); */
+  --cGradient3: rgba(0, 212, 255, 1); */
 }
 
 /* https://www.w3schools.com/css/tryit.asp?filename=trycss_link_advanced */
@@ -32,29 +23,35 @@ body {
 .t:hover, .t:active {
   background-color: red;
 }
-.navbar {
-  border-radius:5px;
-  padding: 10px;
 
+.navbar {
+  border-radius: 5px;
+  padding: 10px;
+  opacity: .9;
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
 }
-.nav-link{
+
+.nav-link {
   border-radius: 5px;
 }
-.nav-link-active{
+
+.nav-link-active {
   border-radius: 5px;
-  background-color:orange;
+  background-color: purple;
 }
-.nav-link:hover{
-  background-color:orange;
+
+.nav-link:hover {
+  background-color: purple;
 }
-.container-content{
+
+.container-content {
   z-index: 1;
-  opacity:.9;
+  opacity: .9;
   padding: 10px;
   background-color: #fff;
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
 }
+
 .background {
   position: absolute;
   display: block;
@@ -63,6 +60,11 @@ body {
   z-index: -1;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .containerParticle {
   /* max-width: 500px; */
@@ -72,10 +74,10 @@ body {
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
 }
 
-
-window.onload = function() {
-  Particles.init
-({
+window.onload=function() {
+  Particles.init ({
     selector:'.background'
   });
-};
+}
+
+;
