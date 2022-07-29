@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+# import djangoTask.views
+from  . import views
 
 urlpatterns = [
+    path('', views.index, name="index"),
+    path('base', views.base, name="base"),
+    path('about', views.about, name="about"),
     path('todo/', include('djangoTask.urls')),
     path('admin/', admin.site.urls),
 ]
