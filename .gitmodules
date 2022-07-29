@@ -1,3 +1,6 @@
 [submodule "djangoTask"]
 	path = djangoTask
 	url = https://github.com/DJTakushi/djangoTask.git
+[submodule "dblog"]
+	path = dblog
+	url = https://github.com/DJTakushi/dblog.git
