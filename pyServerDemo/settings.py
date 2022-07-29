@@ -78,7 +78,11 @@ WSGI_APPLICATION = 'pyServerDemo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pyServerDemo',
+        'NAME': 'pyserverdemo',
+        'USER':'danny',
+        'PASSWORD':'pass',
+        'HOST':'localhost',
+        'PORT':'5432'
     }
 }
 
