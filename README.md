@@ -48,3 +48,32 @@ Enter the password when prompted.
 You should now be able to run your server with either:
 - `py manage.py runserver`
 - `heroku local -f Procfile.windows` (`heroku local` if your Unix)
+
+# dblog
+dblog was written to be served on github pages and I'd like to keep that system in place for backwards compatibility/precedence.
+
+To integrate it to this site though, it seems as though the best option is to generate the static pages on my machine and add these derived files to version control.  Since Jekyll is a Ruby Gem and not a python file, this seems like it can't be offloaded to a remove server.  Life is truly suffering.
+
+## Installing Jekyll
+
+## Install Ruby (Windows)
+`winget install -e --id RubyInstallerTeam.Ruby`
+Broken.  Following official documentation [https://jekyllrb.com/docs/installation/windows/](https://jekyllrb.com/docs/installation/windows/).
+
+Use the GUI installer at[https://rubyinstaller.org/](https://rubyinstaller.org/).
+
+## Install jekyll
+`gem install jekyll bundler`
+
+Confirm successful installation with `jekyll -v`
+
+Note that you may have to install several other gems.  I had to install:
+- `wdm`
+- `webrick`
+- `jekyll-mentions`
+- `github-pages`
+
+This probably works better on Linux.
+
+## Build static site
+`jekyll build`
