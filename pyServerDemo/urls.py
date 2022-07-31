@@ -24,4 +24,9 @@ urlpatterns = [
     path('about', views.about, name="about"),
     path('todo/', include('djangoTask.urls')),
     path('admin/', admin.site.urls),
+    path('dblog',views.dblog, name="dblog"),
+    path('dblog/',views.dblog, name="dblog"),
+    path('dblog/<slug:slug>',views.slugView.as_view()),
+    path('dblog/<slug:slug>.html',views.slugView.as_view()),
+    path('dblog/<int:year>/<int:month>/<int:day>/<slug:slug>.html',views.blogPostView.as_view())
 ]

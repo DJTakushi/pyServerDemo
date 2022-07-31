@@ -1,0 +1,34 @@
+{% extends "pyServerDemo/base.html"  %}
+{% block title %}{% verbatim %}{{ page.title }}{% endverbatim %}{% endblock %}
+{% block navActive %}dblog{% endblock %}
+
+{% block header %}
+{% verbatim %}
+<meta charset="utf-8">
+<title>{{ page.title }}</title>
+{% feed_meta %}
+{% seo %}
+{% endverbatim %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'pyServerDemo/style.css' %}">
+<script src="{% static 'pyServerDemo/myScripts.js' %}"></script>
+<link rel="icon" type="image/x-icon" href="{% static 'pyServerDemo/images/favicon.ico' %}">
+<link rel="stylesheet" href="{% static 'dblogStyles.css' %}">{% endblock %}
+
+
+{% block content %}
+{% verbatim %}
+<h1>{{ page.name }}</h1>
+<h2>{{ page.position }}</h2>
+
+{{ content }}
+
+<h2>Posts</h2>
+<ul>
+  {% assign filtered_posts = site.posts | where: 'author', page.short_name %}
+  {% for post in filtered_posts %}
+    <li><a href="{{ post.url | prepend:site.baseurl}}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>
+{% endverbatim %}
+{% endblock %}
