@@ -11,6 +11,8 @@
   <script src="{% static 'pyServerDemo/myScripts.js' %}"></script>
   <link rel="icon" type="image/x-icon" href="{% static 'pyServerDemo/images/favicon.ico' %}">
 
+  {% block header %}
+  {% endblock %}
 </head>
 
 <body>
@@ -31,6 +33,9 @@
         </ul>
       </div>
       <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link tNav" href="{% url 'dblog' %}" id="dblog">dblog</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link tNav" href="{% url 'about' %}" id="about">About</a>
         </li>

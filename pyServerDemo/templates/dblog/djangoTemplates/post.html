@@ -1,0 +1,35 @@
+{% extends "pyServerDemo/base.html"  %}
+{% block title %}{% verbatim %}{{ page.title }}{% endverbatim %}{% endblock %}
+{% block navActive %}dblog{% endblock %}
+
+
+{% block header %}
+{% verbatim %}
+<meta charset="utf-8">
+<title>{{ page.title }}</title>
+{% feed_meta %}
+{% seo %}
+{% endverbatim %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'pyServerDemo/style.css' %}">
+<script src="{% static 'pyServerDemo/myScripts.js' %}"></script>
+<link rel="icon" type="image/x-icon" href="{% static 'pyServerDemo/images/favicon.ico' %}">
+<link rel="stylesheet" href="{% static 'dblogStyles.css' %}">
+{% endblock %}
+
+{% block content %}
+{% verbatim %}
+<h1>{{ page.title }}</h1>
+
+<p>
+  {{ page.date | date_to_string }}
+  {% assign author = site.authors | where: 'short_name', page.author | first %}
+  {% if author %}
+    - <a href="{{ author.url | prepend:site.baseurl }}">{{ author.name }}</a>
+  {% endif %}
+</p>
+
+{{ content }}
+
+{% endverbatim %}
+{% endblock %}

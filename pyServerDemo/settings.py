@@ -15,6 +15,9 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# dblog flag
+WRITE_BLOG_TEMPLATES_ON_STARTUP = True
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -31,6 +34,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1:8000', 'agile-atoll-15964.herokuapp.com
 # Application definition
 
 INSTALLED_APPS = [
+    'pyServerDemo.apps.DblogAppConfig',
     'djangoTask.apps.DjangotaskConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -56,7 +60,10 @@ ROOT_URLCONF = 'pyServerDemo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [str(BASE_DIR)+"/pyServerDemo/templates",],
+        'DIRS': [str(BASE_DIR)+"/pyServerDemo/templates",
+            str(BASE_DIR),
+            str(BASE_DIR)+"/dblog/dblogDjango"
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,6 +131,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "pyServerDemo/static",
+    BASE_DIR / "dblog/dblogDjango/assets/css",
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

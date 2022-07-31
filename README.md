@@ -76,4 +76,6 @@ Note that you may have to install several other gems.  I had to install:
 This probably works better on Linux.
 
 ## Build static site
-`jekyll build`
+`bundle exec jekyll build --layouts djangoTemplates -d dblogDjango`
+- `--layouts djangoTemplates` will use django-specific/generated templates.  This is done to allow gitHub pages hosting to continue to use the native content in `_layouts`.  In the future these should be reconciled.
+- `-d dblogDjango` will set the destination in a new folder.  This is to protect the native `_site` for gitHub pages.  As above, this could be reconciled/simplified in the future. 

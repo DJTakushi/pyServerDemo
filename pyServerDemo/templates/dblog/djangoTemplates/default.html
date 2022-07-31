@@ -1,0 +1,32 @@
+{% extends "pyServerDemo/base.html"  %}
+{% block title %}{% verbatim %}{{ page.title }}{% endverbatim %}{% endblock %}
+{% block navActive %}dblog{% endblock %}
+
+{% block header %}
+{% verbatim %}
+<meta charset="utf-8">
+<title>{{ page.title }}</title>
+{% feed_meta %}
+{% seo %}
+{% endverbatim %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'pyServerDemo/style.css' %}">
+<script src="{% static 'pyServerDemo/myScripts.js' %}"></script>
+<link rel="icon" type="image/x-icon" href="{% static 'pyServerDemo/images/favicon.ico' %}">
+<link rel="stylesheet" href="{% static 'dblogStyles.css' %}">
+{% endblock %}
+
+
+{% block content %}
+{% verbatim %}
+<html>
+  <head>
+
+  </head>
+  <body>
+    {% include navigation.html %}
+    {{ content }}
+  </body>
+</html>
+{% endverbatim %}
+{% endblock %}
