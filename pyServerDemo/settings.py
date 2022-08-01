@@ -131,7 +131,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "pyServerDemo/static",
-    BASE_DIR / "dblog/dblogDjango/assets/css",
+    ('dblog', BASE_DIR / "dblog/dblogDjango/assets"),
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
