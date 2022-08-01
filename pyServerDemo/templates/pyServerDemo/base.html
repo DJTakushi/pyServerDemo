@@ -1,4 +1,4 @@
-<!doctype html>
+{% block frontmatter %}{% endblock %}<!doctype html>
 <html lang="en">
 
 <head>
@@ -9,9 +9,8 @@
   {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static 'pyServerDemo/style.css' %}">
   <script src="{% static 'pyServerDemo/myScripts.js' %}"></script>
-  <link rel="icon" type="image/x-icon" href="{% static 'pyServerDemo/images/favicon.ico' %}">
-
   {% block header %}
+  <link rel="icon" type="image/x-icon" href="{% static 'pyServerDemo/images/favicon.ico' %}">
   {% endblock %}
 </head>
 
