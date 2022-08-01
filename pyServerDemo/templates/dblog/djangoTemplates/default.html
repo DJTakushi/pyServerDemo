@@ -3,30 +3,21 @@
 {% block navActive %}dblog{% endblock %}
 
 {% block header %}
+{% load static %}
+  <link rel="icon" type="image/x-icon" href="{% static 'dblog/images/favicon.ico' %}">
+  <link rel="stylesheet" href="{% static 'dblog/css/dblogStyles.css' %}">
 {% verbatim %}
-<meta charset="utf-8">
-<title>{{ page.title }}</title>
 {% feed_meta %}
 {% seo %}
 {% endverbatim %}
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'pyServerDemo/style.css' %}">
-<script src="{% static 'pyServerDemo/myScripts.js' %}"></script>
-<link rel="icon" type="image/x-icon" href="{% static 'pyServerDemo/images/favicon.ico' %}">
-<link rel="stylesheet" href="{% static 'dblogStyles.css' %}">
 {% endblock %}
 
 
 {% block content %}
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column containerParticle">
 {% verbatim %}
-<html>
-  <head>
-
-  </head>
-  <body>
     {% include navigation.html %}
     {{ content }}
-  </body>
-</html>
 {% endverbatim %}
+</div>
 {% endblock %}
