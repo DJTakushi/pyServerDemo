@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1:8000', 'agile-atoll-15964.herokuapp.com
 INSTALLED_APPS = [
     'pyServerDemo.apps.DblogAppConfig',
     'djangoTask.apps.DjangotaskConfig',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
