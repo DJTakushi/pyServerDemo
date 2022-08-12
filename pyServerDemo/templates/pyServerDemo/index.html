@@ -2,6 +2,11 @@
 {% block title %}pyServerDemo{% endblock %}
 {% block navActive %}"index"{% endblock %}
 {% block content %}
+{% if message_t %}
+<div class = "container-content">
+<p>{{ message_t }}</p>
+</div>
+{% endif %}
 <div class="container-fluid center text-white">
   <p>Select a project in the navbar above.</p>
 </div>

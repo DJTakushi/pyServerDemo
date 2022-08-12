@@ -1,0 +1,96 @@
+{% extends "pyServerDemo/base.html" %}
+{% block title %}{{user_t.username}}{% endblock %}
+{% block navActive %}"profile"{% endblock %}
+{% block content %}
+<div class="container-fluid">
+{% if message_t %}
+<p>{{ message_t }}</p>
+{% endif %}
+{% if user.is_superuser %}
+<form action="{% url 'user' user_t.id %}" method="post">
+{% csrf_token %}
+{% endif %}
+=<table class="container-content">
+  <tr>
+    <td>Username</td>
+    <td>
+      {% if user.is_superuser %}
+      <input type="text" name="username" value="{{ user_t.username }}">
+      {% else %}{{user_t.username}}{% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td>
+      {% if user.is_superuser %}
+      <input type="text" name="email" value="{{ user_t.email }}">
+      {% else %}{{user_t.email}}{% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>First Name</td>
+    <td>
+      {% if user.is_superuser %}
+      <input type="text" name="first_name" value="{{ user_t.first_name }}">
+      {% else %}{{user_t.first_name}}{% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>Last Name</td>
+    <td>
+      {% if user.is_superuser %}
+      <input type="text" name="last_name" value="{{ user_t.last_name }}">
+      {% else %}{{user_t.last_name}}{% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>ID</td>
+    <td>{{user_t.id}}</td>
+  </tr>
+  <tr>
+    <td>Superuser</td>
+    <td>{{user_t.is_superuser}}</td>
+  </tr>
+  <tr>
+    <td>perm: add_todo</td>
+    <td>
+      {% if user.is_superuser %}
+      <input type="checkbox" name="add_todo" value="on" {{ perm_add_todo }}>
+      {% else %}{{perm_add_todo}}{% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>perm: change_todo</td>
+    <td>
+      {% if user.is_superuser %}
+      <input type="checkbox" name="change_todo" value="on" {{ perm_change_todo }}>
+      {% else %}{{perm_change_todo}}{% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>perm: delete_todo</td>
+    <td>
+      {% if user.is_superuser %}
+      <input type="checkbox" name="delete_todo" value="on" {{ perm_delete_todo }}>
+      {% else %}{{perm_delete_todo}}{% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>perm: view_todo</td>
+    <td>
+      {% if user.is_superuser %}
+      <input type="checkbox" name="view_todo" value="on" {{ perm_view_todo }}>
+      {% else %}{{perm_view_todo}}{% endif %}
+    </td>
+  </tr>
+</table>
+<input type="submit" value="save">
+</form>
+<a class="btn btn-primary btn-sm" href="{% url 'password_change' %}" role="button">Password Change</a>
+<form action="{% url 'userDelete' %}" method="post">
+  {% csrf_token %}
+  <input type="hidden" name="id" value="{{user_t.id}}">
+  <input type="submit" value="delete">
+</form>
+</div>
+{% endblock %}
