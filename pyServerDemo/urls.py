@@ -20,13 +20,29 @@ from  . import views
 
 urlpatterns = [
     path('', views.index, name="index"),
+    path('index/<str:message>', views.index, name='indexM'),
     path('base', views.base, name="base"),
     path('about', views.about, name="about"),
     path('todo/', include('djangoTask.urls')),
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name = "admin"),
     path('dblog',views.dblog, name="dblog"),
     path('dblog/',views.dblog, name="dblog"),
-    path('dblog/<slug:slug>',views.slugView.as_view()),
     path('dblog/<slug:slug>.html',views.slugView.as_view()),
+    path('dblog/<slug:slug>',views.slugView.as_view()),
     path('dblog/<int:year>/<int:month>/<int:day>/<slug:slug>.html',views.blogPostView.as_view())
+]
+
+urlpatterns += [
+    path('accounts/logout/', views.logout_view, name="logout"),
+    path('createUser', views.createUser, name="createUser"),
+    path('userDelete', views.userDelete, name="userDelete"),
+    path('usersView', views.usersView, name="usersView"),
+    path('usersView/<str:message>', views.usersView, name="usersViewM"),
+    path('user/<int:id>', views.profile, name="user"),
+    path('api-auth/', include('rest_framework.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+
+    path('accounts/profile/', views.profile, name="profile"),
+    # path('app_list', views.app_list, name="app_list"),
+
 ]

@@ -1,0 +1,40 @@
+{% extends "pyServerDemo/base.html" %}
+{% block title %}Create User{% endblock %}
+{% block navActive %}"user"{% endblock %}
+{% block content %}
+<h3>Create New User</h3>
+{% if message_t %}
+<p>{{ message_t }}</p>
+{% endif %}
+<form action="{% url 'createUser' %}" method="post">
+  {% csrf_token %}
+  <fieldset>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+    <table class="table table-dark table-striped table-hover table-sm">
+      <caption>New User fields</caption>
+      <tr>
+        <td>username</td>
+        <td><input type="text" name="username_p" id="username" value="{{username_t}}"></td>
+      </tr>
+      <tr>
+        <td>email</td>
+        <td><input type="text" name="email_p" value="{{email_t}}"></td>
+      </tr>
+      <tr>
+        <td>password</td>
+        <td><input type="text" name="password_p" value="{{password_t}}"></td>
+      </tr>
+      <tr>
+        <td>firstname</td>
+        <td><input type="text" name="first_name_p" value="{{first_name_t}}"></td>
+      </tr>
+      <tr>
+        <td>lastname</td>
+        <td><input type="text" name="last_name_p" value="{{last_name_t}}"></td>
+      </tr>
+    </table>
+  </fieldset>
+  <input type="submit" value="save">
+</form>
+{% endblock %}
