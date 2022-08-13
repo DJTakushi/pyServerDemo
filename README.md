@@ -86,3 +86,19 @@ Per [https://docs.djangoproject.com/en/4.0/topics/auth/default/#creating-users](
 `[heroku run]` `python manage.py createsuperuser --username=joe --email=joe@example.com`
 
 TODO: This could be done in an automatic script, but since it doesn't work in an `AppConfig`'s `ready()` function (database loading problem(?)), doing it by hand will suffice for now.
+
+## Code Coverage
+
+#### Setup
+Install [coverage.py](https://coverage.readthedocs.io/en/6.4.3/) with
+
+`pip install coverage`
+
+#### Run Tests
+`coverage run --source='.' manage.py test`
+
+#### View Test Results in Console
+`coverage report`
+
+#### HTML Reports
+`coverage html`
