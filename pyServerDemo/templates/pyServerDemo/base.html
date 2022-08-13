@@ -37,6 +37,7 @@
         <li class="nav-item">
           <a class="nav-link tNav" href="{% url 'about' %}" id="about">About</a>
         </li>
+        {% if USE_USERS %}
         {% if user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link tNav" href="{% url 'usersView' %}" id="users">Users</a>
@@ -58,6 +59,7 @@
         <li class="nav-item">
           <a class="nav-link tNav" href="{% url 'createUser' %}" id="user">create account</a>
         </li>
+        {% endif %}
         {% endif %}
       </ul>
     </nav>
