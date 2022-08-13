@@ -78,4 +78,11 @@ This probably works better on Linux.
 ## Build static site
 `bundle exec jekyll build --layouts djangoTemplates -d dblogDjango`
 - `--layouts djangoTemplates` will use django-specific/generated templates.  This is done to allow gitHub pages hosting to continue to use the native content in `_layouts`.  In the future these should be reconciled.
-- `-d dblogDjango` will set the destination in a new folder.  This is to protect the native `_site` for gitHub pages.  As above, this could be reconciled/simplified in the future. 
+- `-d dblogDjango` will set the destination in a new folder.  This is to protect the native `_site` for gitHub pages.  As above, this could be reconciled/simplified in the future.
+
+## Create SuperUser
+Per [https://docs.djangoproject.com/en/4.0/topics/auth/default/#creating-users](https://docs.djangoproject.com/en/4.0/topics/auth/default/#creating-users), create a superuser by using:
+
+`[heroku run]` `python manage.py createsuperuser --username=joe --email=joe@example.com`
+
+TODO: This could be done in an automatic script, but since it doesn't work in an `AppConfig`'s `ready()` function (database loading problem(?)), doing it by hand will suffice for now.
