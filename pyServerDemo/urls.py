@@ -20,6 +20,7 @@ from  . import views
 
 urlpatterns = [
     path('', views.index, name="index"),
+    path('', views.index, name="pyServerDemoIndex"),
     path('index/<str:message>', views.index, name='indexM'),
     path('base', views.base, name="base"),
     path('about', views.about, name="about"),
