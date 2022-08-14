@@ -12,6 +12,7 @@ class DblogAppConfig(AppConfig):
             destinationDir = str(settings.BASE_DIR)+"/dblog/djangoTemplates/"
             context = {'user':None}
             context['USE_USERS_FALSE']=True
+            context['USE_DBLOG_FALSE']=True
 
             for root, dirs, files in os.walk(sourceTemplateDir):
                 for file in files:

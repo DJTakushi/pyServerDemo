@@ -32,9 +32,10 @@
       </div>
       <a class="btn btn-primary btn-sm" id="switch" onclick="toggleTheme()">Theme</a>
       <ul class="navbar-nav">
+        {% if not USE_DBLOG_FALSE %}
         <li class="nav-item">
           <a class="nav-link tNav" href="{% url 'dblog' %}" id="dblog">dblog</a>
-        </li>
+        </li>{% endif %}
         <li class="nav-item">
           <a class="nav-link tNav" href="{% url 'about' %}" id="about">About</a>
         </li>
