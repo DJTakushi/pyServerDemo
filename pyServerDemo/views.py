@@ -108,6 +108,10 @@ def profile(request, id = None):
             if user_t.has_perm("djangoTask."+p):
                 v = "checked"
             context[contextName]=v
+        if user_t.is_superuser:
+            context["user_t_is_superuser"]="checked"
+        else:
+            context["user_t_is_superuser"]="unchecked"
 
         template = loader.get_template('registration/profile.html')
         return HttpResponse(template.render(context,request))
