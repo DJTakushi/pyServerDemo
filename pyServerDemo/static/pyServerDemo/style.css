@@ -18,8 +18,8 @@
   --color-accent: purple;
   --font-color: #ffffff;
 }
-table{
-
+.table{
+  background-color:var(--color-menu);
 }
 body {
   /* https://www.w3schools.com/css/css3_gradients.asp */
