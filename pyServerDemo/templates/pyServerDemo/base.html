@@ -16,18 +16,25 @@
 <body>
   <div class="cover-container d-flex h-100 p-3 mx-auto flex-column containerParticle t_overflow">
     <nav class="navbar navbar-expand">
+      {% if not USE_DBLOG_FALSE %}
       <a class="navbar-brand">pyServerDemo</a>
+      {% else %}
+      <a class="navbar-brand">dblog</a>
+      {% endif %}
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link index" href="{% url 'index' %}" id="index">Home</a>
           </li>
+          {% if not USE_DBLOG_FALSE %}
           <li class="nav-item" id="new">
             <a class="nav-link" href="{% url 'djangoTask:index' %}" id="new">djangoTask</a>
           </li>
           <li class="nav-item" id="base">
             <a class="nav-link" href="{% url 'base' %}" id="base">Base</a>
           </li>
+          {% else %}
+          {% endif %}
         </ul>
       </div>
       <a class="btn btn-primary btn-sm" id="switch" onclick="toggleTheme()">Theme</a>
@@ -35,10 +42,21 @@
         {% if not USE_DBLOG_FALSE %}
         <li class="nav-item">
           <a class="nav-link tNav" href="{% url 'dblog' %}" id="dblog">dblog</a>
-        </li>{% endif %}
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link tNav" href="{% url 'pyServerDemoIndex' %}" id="dblog">pyServerDemo</a>
+        </li>
+        {% endif %}
+        {% if not USE_DBLOG_FALSE %}
         <li class="nav-item">
           <a class="nav-link tNav" href="{% url 'about' %}" id="about">About</a>
         </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link tNav" href="/dblog/about.html" id="about">About</a>
+        </li>
+        {% endif %}
         {% if not USE_USERS_FALSE %}
         {% if user.is_authenticated %}
         <li class="nav-item">
