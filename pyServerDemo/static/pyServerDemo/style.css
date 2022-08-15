@@ -89,7 +89,10 @@ p {
   left: 0;
   z-index: -1;
 }
-
+.t_overflow{
+  height:100vh;
+  overflow:auto;
+}
 .center {
   display: flex;
   justify-content: center;
