@@ -2,6 +2,7 @@
 {% block title %}Create User{% endblock %}
 {% block navActive %}"user"{% endblock %}
 {% block content %}
+<div class="container-content">
 <h3>Create New User</h3>
 {% if message_t %}
 <p>{{ message_t }}</p>
@@ -37,4 +38,5 @@
   </fieldset>
   <input type="submit" value="save">
 </form>
+</div>
 {% endblock %}

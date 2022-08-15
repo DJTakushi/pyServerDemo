@@ -2,6 +2,7 @@
 {% block title %}Login{% endblock %}
 {% block navActive %}"user"{% endblock %}
 {% block content %}
+<div class="container-content">
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
@@ -31,4 +32,5 @@
 {# Assumes you set up the password_reset view in your URLconf #}
 <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
 <p>New user?  <a href="{% url 'createUser' %}">Create user here.</a></p>
+</div>
 {% endblock %}
