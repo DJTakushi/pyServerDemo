@@ -1,4 +1,4 @@
-# pyServerDemo
+# Takushi
 Demonstration server for python project.  Created to explore using Heroku for hosting python (Django) projects.
 
 ## Setting up Database
@@ -19,26 +19,26 @@ Log in to PostgreSQL with the default `postgres` user.  When prompted, enter the
 `psql -U postgres`
 
 ### 3 Create the server's database
-`CREATE DATABASE pyserverdemo;`
+`CREATE DATABASE takushi;`
 
 ### 4 Create the server's user
-`CREATE USER pyserverdemo_u WITH ENCRYPTED PASSWORD 'pyServerDemo_u_Password';`
+`CREATE USER takushi_u WITH ENCRYPTED PASSWORD 'takushi_u_Password';`
 
 ### 5 Set recommended parameters
-`ALTER ROLE pyserverdemo_u SET client_encoding TO 'utf8';`
+`ALTER ROLE takushi_u SET client_encoding TO 'utf8';`
 
-`ALTER ROLE pyserverdemo_u SET default_transaction_isolation TO 'read committed';`
+`ALTER ROLE takushi_u SET default_transaction_isolation TO 'read committed';`
 
-`ALTER ROLE pyserverdemo_u SET timezone TO 'UTC';`
+`ALTER ROLE takushi_u SET timezone TO 'UTC';`
 
 ### 6 Grant permissions to user
-`GRANT ALL PRIVILEGES ON DATABASE pyserverdemo TO pyserverdemo_u;`
+`GRANT ALL PRIVILEGES ON DATABASE takushi TO takushi_u;`
 
 psql can be exited with `\q`
 
 If you want to log in to PostgreSQL with this user, use the command:
 
-`psql -U pyserverdemo_u -d pyserverdemo`
+`psql -U takushi_u -d takushi`
 
 Enter the password when prompted.
 

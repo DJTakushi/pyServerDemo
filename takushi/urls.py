@@ -1,4 +1,4 @@
-"""pyServerDemo URL Configuration
+"""takushi URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -20,7 +20,7 @@ from  . import views
 
 urlpatterns = [
     path('', views.index, name="index"),
-    path('', views.index, name="pyServerDemoIndex"),
+    path('', views.index, name="takushiIndex"),
     path('index/<str:message>', views.index, name='indexM'),
     path('base', views.base, name="base"),
     path('about', views.about, name="about"),

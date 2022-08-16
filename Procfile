@@ -1,1 +1,1 @@
-web: gunicorn pyServerDemo.wsgi
+web: gunicorn takushi.wsgi

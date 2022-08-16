@@ -14,18 +14,18 @@ from django.contrib.auth.models import Permission, User
 
 uperms = ['uCreate','uRead','uUpdate','uDelete']
 def base(request):
-    template = loader.get_template('pyServerDemo/base.html')
+    template = loader.get_template('takushi/base.html')
     context = {}
     return HttpResponse(template.render(context,request))
 def index(request, message=None):
-    template = loader.get_template('pyServerDemo/index.html')
+    template = loader.get_template('takushi/index.html')
     context = {}
     if message:
         print("message = "+message)
         context['message_t']=message
     return HttpResponse(template.render(context,request))
 def about(request):
-    template = loader.get_template('pyServerDemo/about.html')
+    template = loader.get_template('takushi/about.html')
     context = {}
     return HttpResponse(template.render(context,request))
 def dblog(request):
@@ -125,7 +125,7 @@ def usersView(request, message = None):
     context = {'user_list':user_list}
     if message:
         context['message_t'] = message
-    context['userAdmin'] = request.user.has_perm('pyServerDemo.add_user')
+    context['userAdmin'] = request.user.has_perm('takushi.add_user')
     template = loader.get_template('registration/users.html')
     return HttpResponse(template.render(context,request))
 def createUser(request):

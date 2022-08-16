@@ -8,7 +8,7 @@ class DblogAppConfig(AppConfig):
 
     def ready(self):
         if settings.WRITE_BLOG_TEMPLATES_ON_STARTUP:
-            sourceTemplateDir = str(settings.BASE_DIR)+"/pyServerDemo/templates/dblog/djangoTemplates/"
+            sourceTemplateDir = str(settings.BASE_DIR)+"/takushi/templates/dblog/djangoTemplates/"
             destinationDir = str(settings.BASE_DIR)+"/dblog/djangoTemplates/"
             context = {'user':None}
             context['USE_USERS_FALSE']=True

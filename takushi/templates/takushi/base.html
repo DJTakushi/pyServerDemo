@@ -7,17 +7,17 @@
   <title>{% block title %}BASE TEMPLATE{% endblock %}</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'pyServerDemo/style.css' %}">
-  <script src="{% static 'pyServerDemo/myScripts.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'takushi/style.css' %}">
+  <script src="{% static 'takushi/myScripts.js' %}"></script>
   {% block header %}
-  <link rel="icon" type="image/x-icon" href="{% static 'pyServerDemo/images/favicon.ico' %}">
+  <link rel="icon" type="image/x-icon" href="{% static 'takushi/images/favicon.ico' %}">
   {% endblock %}
 </head>
 <body>
   <div class="cover-container d-flex h-100 p-3 mx-auto flex-column containerParticle t_overflow">
     <nav class="navbar navbar-expand">
       {% if not USE_DBLOG_FALSE %}
-      <a class="navbar-brand nav-link index" href="{% url 'index' %}" id="index">pyServerDemo</a>
+      <a class="navbar-brand nav-link index" href="{% url 'index' %}" id="index">takushi</a>
       {% else %}
       <a class="navbar-brand nav-link index" href="{% url 'dblog' %}" id = "dblog">dblog</a>
       {% endif %}
@@ -42,7 +42,7 @@
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link tNav" href="{% url 'pyServerDemoIndex' %}" id="pyServerDemo">pyServerDemo</a>
+          <a class="nav-link tNav" href="{% url 'takushiIndex' %}" id="takushi">takushi</a>
         </li>
         {% endif %}
         {% if not USE_DBLOG_FALSE %}
