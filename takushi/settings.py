@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-import django_heroku
+# import django_heroku
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-#6629i0r%d*-94l&c$kr7&$k4((&yrogv^ez@i!capy%8^aa=*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1:8000', 'agile-atoll-15964.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1:8000', 'agile-atoll-15964.herokuapp.com', 'takushi.eba-vb2n2uu5.us-west-2.elasticbeanstalk.com']
 
 
 # Application definition
@@ -141,4 +141,4 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
