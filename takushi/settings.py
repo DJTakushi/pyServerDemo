@@ -16,7 +16,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # dblog flag
-#WRITE_BLOG_TEMPLATES_ON_STARTUP = True
+WRITE_BLOG_TEMPLATES_ON_STARTUP = True
 
 
 # Quick-start development settings - unsuitable for production
