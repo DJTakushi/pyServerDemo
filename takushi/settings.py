@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1:8000',
     'agile-atoll-15964.herokuapp.com',
     'takushi-dev3.eba-vb2n2uu5.us-west-2.elasticbeanstalk.com',
+    'www.takushi.us'
     ]
 
 
