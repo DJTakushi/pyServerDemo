@@ -162,3 +162,4 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # Activate Django-Heroku.
 if 'DYNO' in os.environ:
     django_heroku.settings(locals())
+X_FRAME_OPTIONS = 'SAMEORIGIN'
