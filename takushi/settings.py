@@ -9,10 +9,10 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+import os
 if 'DYNO' in os.environ:
     import django_heroku
 from pathlib import Path
-import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -33,7 +33,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1:8000',
     'agile-atoll-15964.herokuapp.com',
-    'http://takushi-dev3.eba-vb2n2uu5.us-west-2.elasticbeanstalk.com/todo/',
+    'takushi-dev3.eba-vb2n2uu5.us-west-2.elasticbeanstalk.com',
     ]
 
 
