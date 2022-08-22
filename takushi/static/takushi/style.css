@@ -1,8 +1,11 @@
 .theme-light {
   --color-primary: #DEEDFF;
+  --color-primary-t: #DEEDFFA0;
   --color-secondary: #FFFFFF;
+  --color-secondary-t: #FFFFFFA0;
 
   --color-menu: AliceBlue;
+  --color-menu-t: #F0F8FFA0;
   --color-menu-font: MidnightBlue;
 
   --color-accent: purple;
@@ -10,9 +13,12 @@
 }
 .theme-dark {
   --color-primary: #0c0d13; /* dark navy */
+  --color-primary-t: #0c0d13A0;
   --color-secondary: #0d1d31; /* navy */
+  --color-secondary-t: #0d1d31A0;
 
-  --color-menu: #343a40; /* original in bg-dark */;
+  --color-menu: #343a40; /* original in bg-dark */
+  --color-menu-t: #343a40A0; ;
   --color-menu-font: #AfCfff; /* Came up with it */
 
   --color-accent: purple;
@@ -27,13 +33,26 @@ body {
   /*https://www.reddit.com/r/css/comments/a6g2tx/how_do_i_create_a_gradient_background_that/ */
   background: radial-gradient(ellipse at bottom, var(--color-secondary) 0%, var(--color-primary) 100%);
   /* cool gradient generated from https://cssgradient.io/ */
-  color: var(--font-color)
+  color: var(--font-color);
 }
 p {
   background-color: var(--color-secondary);
   opacity: .9;
   padding: 15px;
   border-radius:10px;
+  word-wrap: break-word;
+}
+
+/* https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp */
+.blogFrame {
+  height: 90vh;
+  overflow:auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.blogFrame::-webkit-scrollbar {
+  display: none;
 }
 
 /* https://www.w3schools.com/css/tryit.asp?filename=trycss_link_advanced */
@@ -53,10 +72,10 @@ p {
 .navbar {
   border-radius: 5px;
   padding: 10px;
-  opacity: .9;
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
   z-index:2; /*helps bring all navbars/dropdowns to the front (in front of content)*/
-  background-color: var(--color-menu);
+  background-color: var(--color-menu-t);
+  margin-bottom:10px;
 }
 
 .nav-link {
@@ -77,9 +96,14 @@ p {
   z-index: 1;/* seems to break dropdown menu */
   opacity: .9;  /* seems to break dropdown menu */
   padding: 10px;
-  /* background-color: #fff; */
   background-color: var(--color-primary);
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
+}
+.container-content-trans-1{
+  background-color: var(--color-primary-t);
+}
+.container-content-trans-2{
+  background-color: var(--color-secondary-t);
 }
 
 .background {
@@ -105,6 +129,10 @@ p {
   padding: 50px;
   /* background-color: #fff; */
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
+}
+
+.ul-noIndent {
+  padding-inline-start: 0px;
 }
 
 window.onload=function() {

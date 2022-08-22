@@ -17,7 +17,9 @@
 <div class="container-content">
 {% verbatim %}
     {% include navigation.html %}
-    {{ content }}
+    <div id="coreContent">
+      {{ content }}
+  </div>
 {% endverbatim %}
 </div>
 {% endblock %}
