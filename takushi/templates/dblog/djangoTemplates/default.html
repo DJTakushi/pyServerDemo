@@ -7,6 +7,13 @@
   <link rel="icon" type="image/x-icon" href="{% static 'dblog/images/favicon.ico' %}">
   <link rel="stylesheet" href="{% static 'dblog/css/dblogStyles.css' %}">
 {% verbatim %}
+{% if layout.customcss %}
+  <link rel="stylesheet" href="/static/dblog/css/{{layout.customcss}}">
+{% else %}
+  <link rel="stylesheet" href="/static/dblog/css/indexStyles.css">
+{% endif %}
+{% endverbatim %}
+{% verbatim %}
 {% feed_meta %}
 {% seo %}
 {% endverbatim %}
@@ -16,10 +23,12 @@
 {% block content %}
 <div class="container-content">
 {% verbatim %}
-    {% include navigation.html %}
-    <div id="coreContent">
-      {{ content }}
+<div class="blogContainer">
+  <div class="posttitle">
+  {% include navigation.html %}
   </div>
+    {{ content }}
+</div>
 {% endverbatim %}
 </div>
 {% endblock %}
