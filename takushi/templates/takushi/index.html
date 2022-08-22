@@ -1,6 +1,13 @@
 {% extends "takushi/base.html"  %}
 {% block title %}takushi{% endblock %}
 {% block navActive %}"index"{% endblock %}
+{% load static %}
+{% block header %}
+<link rel="stylesheet" type="text/css" href="{% static 'dblog/css/dblogStyles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'dblog/css/indexStyles.css' %}">
+<link rel="icon" type="image/x-icon" href="{% static 'takushi/images/favicon.ico' %}">
+{% endblock %}
+
 {% block content %}
 {% if message_t %}
 <div class = "container-fluid">
