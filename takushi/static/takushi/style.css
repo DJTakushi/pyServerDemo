@@ -1,11 +1,11 @@
 .theme-light {
   --color-primary: #DEEDFF;
-  --color-primary-t: #DEEDFFA0;
+  --color-primary-t: #DEEDFFC0;
   --color-secondary: #FFFFFF;
-  --color-secondary-t: #FFFFFFA0;
+  --color-secondary-t: #FFFFFFC0;
 
   --color-menu: AliceBlue;
-  --color-menu-t: #F0F8FFA0;
+  --color-menu-t: #F0F8FFC0;
   --color-menu-font: MidnightBlue;
 
   --color-accent: purple;
@@ -13,12 +13,12 @@
 }
 .theme-dark {
   --color-primary: #0c0d13; /* dark navy */
-  --color-primary-t: #0c0d13A0;
+  --color-primary-t: #0c0d13C0;
   --color-secondary: #0d1d31; /* navy */
-  --color-secondary-t: #0d1d31A0;
+  --color-secondary-t: #0d1d31C0;
 
   --color-menu: #343a40; /* original in bg-dark */
-  --color-menu-t: #343a40A0; ;
+  --color-menu-t: #343a40C0; ;
   --color-menu-font: #AfCfff; /* Came up with it */
 
   --color-accent: purple;
@@ -35,13 +35,19 @@ body {
   /* cool gradient generated from https://cssgradient.io/ */
   color: var(--font-color);
 }
-p {
-  background-color: var(--color-secondary);
-  opacity: .9;
+.bodyContainer{
+  max-width:1500px;
+  padding: 1rem;
+}
+.bodyContainer::-webkit-scrollbar {
+  display: none;
+}
+/* p {
+  background-color: var(--color-secondary-t);
   padding: 15px;
   border-radius:10px;
   word-wrap: break-word;
-}
+} */
 
 /* https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp */
 .blogFrame {
@@ -94,9 +100,9 @@ p {
 
 .container-content {
   z-index: 1;/* seems to break dropdown menu */
-  opacity: .9;  /* seems to break dropdown menu */
+  /* opacity: .9;*/  /* seems to break dropdown menu */
   padding: 10px;
-  background-color: var(--color-primary);
+  background-color: var(--color-primary-t);
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
 }
 .container-content-trans-1{
@@ -126,7 +132,7 @@ p {
 .containerParticle {
   /* max-width: 500px; */
   margin: 0 auto;
-  padding: 50px;
+  /* padding: 50px; */
   /* background-color: #fff; */
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
 }
