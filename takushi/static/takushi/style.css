@@ -131,10 +131,6 @@ p {
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
 }
 
-.ul-noIndent {
-  padding-inline-start: 0px;
-}
-
 window.onload=function() {
   Particles.init ({
     selector:'.background'
