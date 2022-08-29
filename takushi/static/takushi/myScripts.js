@@ -34,6 +34,16 @@ function toggleTheme() {
        setTheme('theme-dark');
    }
 }
+function applyTime(id,tz_p) {
+  // based on https://www.plus2net.com/javascript_tutorial/clock.php
+  var d = new Date().toLocaleString("en-US", {timeZone: tz_p,  hour12: false, hour: '2-digit', minute:'2-digit'});
+  document.getElementById(id).innerHTML = d;
+  timeTimeout(id,tz_p);
+}
+function timeTimeout(id,tz_p) {
+  var refresh=1000;
+  mytime = setTimeout(applyTime,refresh,id,tz_p);
+}
 // Immediately invoked function to set the theme on initial load
 (function () {
    if (localStorage.getItem('theme') === 'theme-dark') {

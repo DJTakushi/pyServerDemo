@@ -15,14 +15,14 @@
 </div>
 {% endif %}
   <div class="row">
-    <div class = "col-sm-9">
+    <div class = "col-sm-8">
       <div class= "container-content container-content-trans-1 blogFrame">
         <a href = "{% url 'dblog' %}"><h1 class="center">Blog</h1></a>
         <div id="dannyBlog" class="blogContainer"></div>
       </div>
     </div>
 
-    <div class = "col-sm-3">
+    <div class = "col-sm-4">
       <div class= "container-content container-content-trans-2">
       <a href = "{% url 'about' %}"><h1 class="center">About</h1></a>
       <div id="aboutFrame"></div>
@@ -43,7 +43,7 @@
             {% for city in cityList %}
               <tr>
                 <td style="vertical-align:middle"><a href="https://en.wikipedia.org/wiki/{{ city.name}}">{{ city.name }}</a></td>
-                <td style="vertical-align:middle">{{ city.localTime }}</td>
+                <td style="vertical-align:middle" id="{{city.name}}"></td>
                 <td style="vertical-align:middle"><img src="{{city.conditionIcon}}"></td>
                 <td style="vertical-align:middle">{{ city.temp_c }} C<br>{{city.temp_f}} F</td>
                 <td style="vertical-align:middle">{{ city.humidity }}%</td>
@@ -53,12 +53,13 @@
             <a href="https://www.weatherapi.com/" title="Free Weather API"><img src='//cdn.weatherapi.com/v4/images/weatherapi_logo.png' alt="Weather data by WeatherAPI.com" border="0"></a>
         </div>
       </div>
-
-
     </div>
 
   </div>
   <script>
+  {% for city in cityList %}
+    applyTime("{{city.name}}","{{city.tz}}");
+  {% endfor %}
   $( "#aboutFrame" ).load( "{% url 'about' %} #coreContent" );
   $( "#dannyBlog" ).load( "{% url 'dblog' %} #blogList" );
   </script>

@@ -61,6 +61,7 @@ def index(request, message=None):
         localTime = apiJsonResponse['location']['localtime']
         localTime = localTime.split(" ")[-1] # take time, not date
         cityDict_t["localTime"]=localTime
+        cityDict_t["tz"] = apiJsonResponse['location']['tz_id']
         cityDict_t["temp_c"] = str(apiJsonResponse['current']['temp_c'])
         cityDict_t["temp_f"] = str(apiJsonResponse['current']['temp_f'])
         cityDict_t["humidity"] = str(apiJsonResponse['current']['humidity'])
