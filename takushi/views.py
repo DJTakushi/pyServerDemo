@@ -11,10 +11,8 @@ import os
 from django.contrib.contenttypes.models import ContentType
 from djangoTask.models import todo
 from django.contrib.auth.models import Permission, User
-import yaml
 import requests
-config = yaml.safe_load(open("takushi/static/takushi/keys/keys.yml"))
-weatherApiKey = config['weatherApi']
+weatherApiKey = os.environ.get('weatherApiKey')
 
 uperms = ['uCreate','uRead','uUpdate','uDelete']
 def getTimeFromZone(tzName):
