@@ -12,6 +12,8 @@ from django.contrib.contenttypes.models import ContentType
 from djangoTask.models import todo
 from django.contrib.auth.models import Permission, User
 import requests
+from django.core.cache import cache
+from datetime import datetime
 weatherApiKey = os.environ.get('weatherApiKey')
 
 uperms = ['uCreate','uRead','uUpdate','uDelete']
@@ -27,12 +29,16 @@ def getTimeFromZone(tzName):
     return output
 
 def getCityData(city):
-    api_url = "http://api.weatherapi.com/v1/current.json"
-    api_url += "?key="+weatherApiKey
-    api_url += "&q="+city+"&aqi=yes"
-    response = requests.get(api_url)
-    responseJSON = response.json()
-    return responseJSON
+    output = cache.get(city)
+    if not output:
+        api_url = "http://api.weatherapi.com/v1/current.json"
+        api_url += "?key="+weatherApiKey
+        api_url += "&q="+city+"&aqi=yes"
+        response = requests.get(api_url)
+        output = response.json()
+        cache.set(city, output, 60)#cache for 60s
+        print("cached city " + city + " at "+str(datetime.now()))
+    return output
 
 def base(request):
     template = loader.get_template('takushi/base.html')
