@@ -33,10 +33,43 @@ if False:
 
 import yfinance as yf
 import time
+import pandas as pd
+from datetime import date
+import numpy as np
 
 start_time = time.time()
-msft = yf.Ticker("MSFT")
-print(msft.info['currentPrice'])
+
+def reqFinData(symbolList):
+    # download data
+    data = yf.download(tickers=symbolList, group_by='Ticker', period="1y", interval="3mo")
+    print(data)
+
+    dataList = []
+    for i in symbolList:
+        # use Adjusted Close as most important data
+        adjClose = data[i]['Adj Close']
+
+        # get most recent data
+        idx_r = adjClose.last_valid_index()
+        close_r = adjClose[idx_r]
+        open_r = data[i]['Open'][idx_r] #get 'Open' with most recent index
+        date_r = idx_r.isoformat()
+
+        # get most historic data
+        idx_h = adjClose.first_valid_index()
+        date_h = idx_h.isoformat()
+        close_h = adjClose[idx_h]
+
+        data_t = {'date_h':date_h,'close_h':close_h,'date_r':date_r,'open_r':open_r,'close_r':close_r}
+
+        dataList.append({'symbol':i,'data':data_t})
+    return dataList
+
+symbolList = ['^GSPC','^DJI','^N225','BTC-USD','JPY=X','EURUSD=X','GC=F','CL=F']
+print(reqFinData(symbolList))
+# print(data['BTC-USD']['Open'].head(1).index.date[0].isoformat())
+
+# print(msft.info['currentPrice'])
 print("--- %s seconds ---" % (time.time() - start_time))
 
 
