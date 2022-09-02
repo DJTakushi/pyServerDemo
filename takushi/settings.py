@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
+import requests
 if 'DYNO' in os.environ:
     import django_heroku
 from pathlib import Path
@@ -18,6 +19,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # dblog flag
 WRITE_BLOG_TEMPLATES_ON_STARTUP = True
+
+# https://www.pythonfixing.com/2022/03/fixed-how-to-dynamically-add-ec2-ip.html
+EC2_PRIVATE_IP = None
+try:
+    EC2_PRIVATE_IP = requests.get(
+        'http://169.254.169.254/latest/meta-data/local-ipv4',
+        timeout=0.01).text
+except requests.exceptions.RequestException:
+    pass
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -36,8 +47,11 @@ ALLOWED_HOSTS = [
     'takushi-dev3.eba-vb2n2uu5.us-west-2.elasticbeanstalk.com',
     'www.takushi.us'
     ]
-
-
+if EC2_PRIVATE_IP:
+    ALLOWED_HOSTS.append(EC2_PRIVATE_IP)
+    print("added "+ALLOWED_HOSTS+" to ALLOWED_HOSTS")
+else:
+    print("EC2_PRIVATE_IP invalid")
 # Application definition
 
 INSTALLED_APPS = [
