@@ -49,7 +49,7 @@ ALLOWED_HOSTS = [
     ]
 if EC2_PRIVATE_IP:
     ALLOWED_HOSTS.append(EC2_PRIVATE_IP)
-    print("added "+ALLOWED_HOSTS+" to ALLOWED_HOSTS")
+    print("added "+EC2_PRIVATE_IP+" to ALLOWED_HOSTS")
 else:
     print("EC2_PRIVATE_IP invalid")
 # Application definition
