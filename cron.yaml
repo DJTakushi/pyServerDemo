@@ -1,0 +1,8 @@
+version: 1
+cron:
+ - name: "updateCities"
+   url: "/neatApi/cities/update"
+   schedule: "0 0 /5 * *"
+ - name: "updateFins"
+   url: "/neatApi/fin/update"
+   schedule: "0 0 /5 * *"
