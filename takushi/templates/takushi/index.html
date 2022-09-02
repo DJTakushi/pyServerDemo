@@ -42,7 +42,7 @@
             </tr>
             {% for city in cityList %}
               <tr class="cityRow" id="{{city}}" >
-                <td style="vertical-align:middle"><a href="https://en.wikipedia.org/wiki/{{ city}}">{{ city }}</a></td>
+                <td style="vertical-align:middle"><a href="https://en.wikipedia.org/wiki/{{ city}}" target="_blank">{{ city }}</a></td>
                 <td style="vertical-align:middle" class="time"></td>
                 <td style="vertical-align:middle"><img class="conditionIcon"></td>
                 <td style="vertical-align:middle" class="temperature"></td>
@@ -66,7 +66,7 @@
             {% for symbol in symbolList %}
               <tr class="finRow" symbol="{{symbol}}" >
                 <td style="vertical-align:middle">
-                  <a href="https://finance.yahoo.com/quote//{{symbol}}">
+                  <a href="https://finance.yahoo.com/quote//{{symbol}}" target="_blank">
                     {{symbol}}
                   </a>
                 </td>
@@ -76,7 +76,7 @@
               </tr>
             {% endfor %}
             </table>
-            Financial data supplied by <a href="https://pypi.org/project/yfinance/">yFinance</a>, a python open-source package that supplies data from Yahoo Finance.  It is maintained by <a href="https://pypi.org/user/ranaroussi/">Ran Aroussi</a>, and not affiliated with Yahoo Finance.  This data is supplied for novelty, and should not be used for anything.
+            Financial data supplied by <a href="https://pypi.org/project/yfinance/" target="_blank">yFinance</a>, a python open-source package that supplies data from Yahoo Finance.  It is maintained by <a href="https://pypi.org/user/ranaroussi/">Ran Aroussi</a>, and not affiliated with Yahoo Finance.  This data is supplied for novelty, and should not be used for anything.
             <br><br>
             Data updates are currently initiated by API requests, and they are unfortunately slow.  I'm working to improving how updates are handled for better performance.  Thanks for your patience.
         </div>
