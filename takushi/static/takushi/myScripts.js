@@ -58,7 +58,7 @@ async function updateCities(apiUrl) {
       const cityName = cityRow.id;
 
       for(const jsonRow of myJson){
-          if (jsonRow.cityName == cityName){
+          if (jsonRow.name == cityName){
             var timeZone = jsonRow.tz;
             var conditionIconLink = jsonRow.conditionIcon;
             var temp_c=jsonRow.temp_c;
@@ -94,7 +94,7 @@ async function updateFin(apiUrl) {
       const symbolName = finRow.getAttribute("symbol");
 
       for(const jsonRow of myJson){
-          if (jsonRow.symbol == symbolName){
+          if (jsonRow.name == symbolName){
             console.log(jsonRow)
 
             var regularMarketPrice = jsonRow.regularMarketPrice;

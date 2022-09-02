@@ -16,7 +16,7 @@ from django.core.cache import cache
 from datetime import datetime
 
 weatherApiKey = os.environ.get('weatherApiKey')
-from neatApi.models import cityList, symbolList
+from neatApi.models import cityData, finData
 
 uperms = ['uCreate','uRead','uUpdate','uDelete']
 def base(request):
@@ -29,8 +29,8 @@ def index(request, message=None):
     if message:
         print("message = "+message)
         context['message_t']=message
-    context['cityList'] = cityList
-    context['symbolList'] = symbolList
+    context['cityList'] = cityData.objectNameList
+    context['symbolList'] = finData.objectNameList
     return HttpResponse(template.render(context,request))
 def about(request):
     template = loader.get_template('takushi/about.html')
