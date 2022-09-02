@@ -4,3 +4,6 @@
 [submodule "dblog"]
 	path = dblog
 	url = https://github.com/DJTakushi/dblog.git
+[submodule "neatApi"]
+	path = neatApi
+	url = https://github.com/DJTakushi/neatApi.git

@@ -41,25 +41,52 @@
               <th>Humid.</th>
             </tr>
             {% for city in cityList %}
-              <tr>
-                <td style="vertical-align:middle"><a href="https://en.wikipedia.org/wiki/{{ city.name}}">{{ city.name }}</a></td>
-                <td style="vertical-align:middle" id="{{city.name}}"></td>
-                <td style="vertical-align:middle"><img src="{{city.conditionIcon}}"></td>
-                <td style="vertical-align:middle">{{ city.temp_c }} C<br>{{city.temp_f}} F</td>
-                <td style="vertical-align:middle">{{ city.humidity }}%</td>
+              <tr class="cityRow" id="{{city}}" >
+                <td style="vertical-align:middle"><a href="https://en.wikipedia.org/wiki/{{ city}}">{{ city }}</a></td>
+                <td style="vertical-align:middle" class="time"></td>
+                <td style="vertical-align:middle"><img class="conditionIcon"></td>
+                <td style="vertical-align:middle" class="temperature"></td>
+                <td style="vertical-align:middle" class="humidity"></td>
               </tr>
             {% endfor %}
             </table>
             <a href="https://www.weatherapi.com/" title="Free Weather API"><img src='//cdn.weatherapi.com/v4/images/weatherapi_logo.png' alt="Weather data by WeatherAPI.com" border="0" style="display:block;margin-left:auto;"></a>
         </div>
       </div>
+
+      <div class="container-content container-content-trans-1" style="margin-top:10px">
+        <div>
+          <table class="table table-striped table-hover table-sm tableFun">
+            <tr>
+              <th>Symbol</th>
+              <th>Latest</th>
+              <th>Movement</th>
+              <th>52Week</th>
+            </tr>
+            {% for symbol in symbolList %}
+              <tr class="finRow" symbol="{{symbol}}" >
+                <td style="vertical-align:middle">
+                  <a href="https://finance.yahoo.com/quote//{{symbol}}">
+                    {{symbol}}
+                  </a>
+                </td>
+                <td style="vertical-align:middle" class="recent"></td>
+                <td style="vertical-align:middle" class="movement"></td>
+                <td style="vertical-align:middle" class="annual"></td>
+              </tr>
+            {% endfor %}
+            </table>
+            Financial data supplied by <a href="https://pypi.org/project/yfinance/">yFinance</a>, a python open-source package that supplies data from Yahoo Finance.  It is maintained by <a href="https://pypi.org/user/ranaroussi/">Ran Aroussi</a>, and not affiliated with Yahoo Finance.  This data is supplied for novelty, and should not be used for anything.
+        </div>
+      </div>
+
     </div>
 
   </div>
   <script>
-  {% for city in cityList %}
-    applyTime("{{city.name}}","{{city.tz}}");
-  {% endfor %}
+  updateCities("{% url 'neatApiCities' %}");
+  applyTimes();
+  updateFin("{% url 'neatApiFins' %}");
   $( "#aboutFrame" ).load( "{% url 'about' %} #coreContent" );
   $( "#dannyBlog" ).load( "{% url 'dblog' %} #blogList" );
   </script>

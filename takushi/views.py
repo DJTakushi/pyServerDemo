@@ -14,32 +14,11 @@ from django.contrib.auth.models import Permission, User
 import requests
 from django.core.cache import cache
 from datetime import datetime
+
 weatherApiKey = os.environ.get('weatherApiKey')
+from neatApi.models import cityList, symbolList
 
 uperms = ['uCreate','uRead','uUpdate','uDelete']
-def getTimeFromZone(tzName):
-    utc_dt=datetime.now(timezone.utc)
-    myZone=pytz.timezone(tzName)
-    output = "{}".format(utc_dt.astimezone(myZone).isoformat())
-    time = output.split("T")[-1]
-    timeList = time.split(":")
-    timeOut = timeList[0]+":"+timeList[1]
-    output = timeOut
-    output2 = output + " " + myZone.zone
-    return output
-
-def getCityData(city):
-    output = cache.get(city)
-    if not output:
-        api_url = "http://api.weatherapi.com/v1/current.json"
-        api_url += "?key="+weatherApiKey
-        api_url += "&q="+city+"&aqi=yes"
-        response = requests.get(api_url)
-        output = response.json()
-        cache.set(city, output, 60)#cache for 60s
-        print("cached city " + city + " at "+str(datetime.now()))
-    return output
-
 def base(request):
     template = loader.get_template('takushi/base.html')
     context = {}
@@ -50,24 +29,8 @@ def index(request, message=None):
     if message:
         print("message = "+message)
         context['message_t']=message
-    cityNameList = ['Osaka','Atlanta','Chicago']
-    cityList = []
-    for i in cityNameList:
-        apiJsonResponse = getCityData(i)
-        cityDict_t = {}
-        cityDict_t['name']=apiJsonResponse['location']['name']
-        if cityDict_t['name'] == "Osaka-Shi": #adjust for wikipedia link
-            cityDict_t['name'] = "Osaka"
-        localTime = apiJsonResponse['location']['localtime']
-        localTime = localTime.split(" ")[-1] # take time, not date
-        cityDict_t["localTime"]=localTime
-        cityDict_t["tz"] = apiJsonResponse['location']['tz_id']
-        cityDict_t["temp_c"] = str(apiJsonResponse['current']['temp_c'])
-        cityDict_t["temp_f"] = str(apiJsonResponse['current']['temp_f'])
-        cityDict_t["humidity"] = str(apiJsonResponse['current']['humidity'])
-        cityDict_t["conditionIcon"] = apiJsonResponse['current']['condition']['icon']
-        cityList.append(cityDict_t)
     context['cityList'] = cityList
+    context['symbolList'] = symbolList
     return HttpResponse(template.render(context,request))
 def about(request):
     template = loader.get_template('takushi/about.html')
@@ -84,7 +47,6 @@ class slugView(TemplateView):
         post_path = os.path.join('dblog/dblogDjango', post_filename)
         print("\n post_path = "+post_path)
         return render(request, post_path)
-        # return render(request, post_filename)
 class blogPostView(TemplateView):
     def dispatch(self, request, *args, **kwargs):
         post_name = self.kwargs['slug']
