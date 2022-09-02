@@ -70,9 +70,9 @@
                     {{symbol}}
                   </a>
                 </td>
-                <td style="vertical-align:middle" class="recent"></td>
-                <td style="vertical-align:middle" class="movement"></td>
-                <td style="vertical-align:middle" class="annual"></td>
+                <td style="vertical-align:middle" class="recent">-</td>
+                <td style="vertical-align:middle" class="movement">-</td>
+                <td style="vertical-align:middle" class="annual">-</td>
               </tr>
             {% endfor %}
             </table>
@@ -84,11 +84,11 @@
 
   </div>
   <script>
+  $( "#aboutFrame" ).load( "{% url 'about' %} #coreContent" );
+  $( "#dannyBlog" ).load( "{% url 'dblog' %} #blogList" );
   updateCities("{% url 'neatApiCities' %}");
   applyTimes();
   updateFin("{% url 'neatApiFins' %}");
-  $( "#aboutFrame" ).load( "{% url 'about' %} #coreContent" );
-  $( "#dannyBlog" ).load( "{% url 'dblog' %} #blogList" );
   </script>
 
 {% endblock %}
