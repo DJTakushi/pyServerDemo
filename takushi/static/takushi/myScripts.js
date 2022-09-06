@@ -54,6 +54,7 @@ async function updateCities(apiUrl) {
     const myJson = await response.json(); //extract JSON from the http response
 
     cityRows=document.getElementsByClassName("cityRow")
+    var earliestTimestamp = new Date();
     for (const cityRow of cityRows){
       const cityName = cityRow.id;
 
@@ -76,10 +77,17 @@ async function updateCities(apiUrl) {
 
             humidity_e = cityRow.getElementsByClassName("humidity")[0]
             humidity_e.innerHTML = humidity+"%"
+
+            date_t = new Date(jsonRow.lastRefresh);
+            if (date_t < earliestTimestamp){
+              earliestTimestamp=date_t;
+            }
             break;
           }
       }
     }
+    finDataTimeStamp = document.getElementById("cityDataTimestamp");
+    finDataTimeStamp.innerHTML="Refreshed "+earliestTimestamp.toLocaleString();
     var refresh=1000*5;
     mytime = setTimeout(updateCities,refresh,apiUrl);
 }
@@ -89,7 +97,8 @@ async function updateFin(apiUrl) {
     const response = await fetch(apiUrl);
     const myJson = await response.json(); //extract JSON from the http response
 
-    finRows=document.getElementsByClassName("finRow")
+    finRows=document.getElementsByClassName("finRow");
+    var earliestTimestamp = new Date();
     for (const finRow of finRows){
       const symbolName = finRow.getAttribute("symbol");
 
@@ -127,10 +136,17 @@ async function updateFin(apiUrl) {
             else {
               annual_e.style.color="red";
             }
+
+            date_t = new Date(jsonRow.lastRefresh);
+            if (date_t < earliestTimestamp){
+              earliestTimestamp=date_t;
+            }
             break;
           }
       }
     }
+    finDataTimeStamp = document.getElementById("finDataTimestamp");
+    finDataTimeStamp.innerHTML="Refreshed "+earliestTimestamp.toLocaleString();
     var refresh=1000*60;
     mytime = setTimeout(updateFin,refresh,apiUrl);
 }
