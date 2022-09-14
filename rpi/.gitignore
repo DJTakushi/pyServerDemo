@@ -1,0 +1,6 @@
+# virtual environment
+Scripts/
+pyvenv.cfg
+
+# logged data
+data.json
