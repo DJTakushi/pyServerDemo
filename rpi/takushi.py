@@ -1,9 +1,22 @@
 import requests
 import yfinance as yf
-from datetime import datetime
+from datetime import datetime, timezone
+import json
 
-LOCAL_TZ = datetime.now().astimezone().tzinfo
+# TODO:
+# [ ]  BASE_URL management
+#    - default to production unless a param is passed during init)
+#    - default to production unless an environment variable is set
+#    - default to localhost unless AWS is identified
+# [ ] rename file to something like 'neatApiUpdater'
+# [ ] package for use by other modules
+# [ ] split this into a subrepository or move to neatApi
+# [ ] unit tests
+# [ ] rebuild this in C++
+# [ ] dockerize / Docker Compose
 BASE_URL = "https://www.takushi.us/neatApi/"
+BASE_URL = "http://localhost:8000/neatApi/"
+SAVEDATA = True
 class finDataUpdater():
     def getCurrentDataJson(self):
         apiUrl = BASE_URL + "fins"
@@ -12,29 +25,34 @@ class finDataUpdater():
         print(output)
         return output
 
-
     def updateDataJson(self, data):
-        for i in data:
-            symbol = i['name']
-            print("Processing " + symbol+":")
-            # print(i)
-            data_i = yf.Ticker(symbol).info
-            for key in i.keys():
-                if key in data_i:
-                    i[key] = data_i[key]
-                    print("set i["+ key + "] to "+ str(i[key]))
-            i['lastRefresh'] = datetime.now(LOCAL_TZ)
+        symbol = data['name']
+        print("Processing " + symbol+":")
+        data_t = yf.Ticker(symbol).info
+        for key in data.keys():
+            if key in data_t and key != "name": # do not use 'name' (bitcoin has a 'name' key)
+                data[key] = data_t[key]
+                print("set i["+ key + "] to "+ str(data[key]))
+        data['lastRefresh'] = datetime.now(timezone.utc).isoformat()
+        print("set i['lastRefresh'] to "+ data['lastRefresh'])
         return data
 
-    def sendDataJson(self, data):
-        apiUrl = BASE_URL + "fins"
-        response = requests.put(BASE_URL, data = data)
+    def sendDataJson(self, data_p):
+        headers = {"Content-Type": "application/json"}
+        apiUrl = BASE_URL + "fin/" + data_p['name']
+        print("apiUrl = "+apiUrl)
+        response = requests.put(apiUrl, json=data_p, headers = headers)
         print("sendDataJson response code: "+str(response.status_code))
 
     def update(self):
         data = self.getCurrentDataJson()
-        data = self.updateDataJson(data)
-        self.sendDataJson(data)
+        for i in data:
+            i = self.updateDataJson(i)
+        if SAVEDATA:
+            with open('data.json','w') as f:
+                json.dump(data, f)
+        for i in data:
+            self.sendDataJson(i)
 
 if __name__ == "__main__":
     fdu = finDataUpdater()
