@@ -2,24 +2,22 @@ import requests
 import yfinance as yf
 from datetime import datetime, timezone
 import json
-
+import os
 # TODO:
-# [ ]  BASE_URL management
-#    - default to production unless a param is passed during init)
-#    - default to production unless an environment variable is set
-#    - default to localhost unless AWS is identified
-# [ ] rename file to something like 'neatApiUpdater'
 # [ ] package for use by other modules
-# [ ] split this into a subrepository or move to neatApi
 # [ ] unit tests
 # [ ] rebuild this in C++
 # [ ] dockerize / Docker Compose
-BASE_URL = "https://www.takushi.us/neatApi/"
-BASE_URL = "http://localhost:8000/neatApi/"
+
+
 SAVEDATA = True
 class finDataUpdater():
+
+    def __init__(self, baseUrl = "https://www.takushi.us/"):
+        self.baseUrl = baseUrl
+
     def getCurrentDataJson(self):
-        apiUrl = BASE_URL + "fins"
+        apiUrl = self.baseUrl + "fins"
         response = requests.get(apiUrl)
         output = response.json()
         print(output)
@@ -39,7 +37,7 @@ class finDataUpdater():
 
     def sendDataJson(self, data_p):
         headers = {"Content-Type": "application/json"}
-        apiUrl = BASE_URL + "fin/" + data_p['name']
+        apiUrl = self.baseUrl + "fin/" + data_p['name']
         print("apiUrl = "+apiUrl)
         response = requests.put(apiUrl, json=data_p, headers = headers)
         print("sendDataJson response code: "+str(response.status_code))
@@ -55,5 +53,11 @@ class finDataUpdater():
             self.sendDataJson(i)
 
 if __name__ == "__main__":
-    fdu = finDataUpdater()
+    baseUrl_t = ""
+    baseUrl_env = os.environ.get('takushiBaseUrl')
+    if baseUrl_env:
+        baseUrl_t = baseUrl_env
+    baseUrl_t += "neatApi/"
+
+    fdu = finDataUpdater(baseUrl_t)
     fdu.update()
