@@ -14,7 +14,8 @@ SAVEDATA = True
 class finDataUpdater():
 
     def __init__(self, baseUrl = "https://www.takushi.us/"):
-        self.baseUrl = baseUrl
+        self.baseUrl = baseUrl+"neatApi/"
+        print("self.baseUrl = "+self.baseUrl)
 
     def getCurrentDataJson(self):
         apiUrl = self.baseUrl + "fins"
@@ -53,11 +54,9 @@ class finDataUpdater():
             self.sendDataJson(i)
 
 if __name__ == "__main__":
-    baseUrl_t = ""
     baseUrl_env = os.environ.get('takushiBaseUrl')
     if baseUrl_env:
-        baseUrl_t = baseUrl_env
-    baseUrl_t += "neatApi/"
-
-    fdu = finDataUpdater(baseUrl_t)
+        fdu = finDataUpdater(baseUrl_env)
+    else:
+        fdu = finDataUpdater()
     fdu.update()
