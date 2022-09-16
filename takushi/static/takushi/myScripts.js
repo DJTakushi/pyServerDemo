@@ -66,8 +66,8 @@ async function updateCities(apiUrl) {
             var timeZone = jsonRow.tz;
             var timeZoneOffset = jsonRow.tz_int;
             var conditionIconLink = jsonRow.conditionIcon;
-            var temp_c=jsonRow.temp_c.toFixed(2);
-            var temp_f=jsonRow.temp_f.toFixed(2);
+            var temp_c=jsonRow.temp_c.toFixed(1);
+            var temp_f=jsonRow.temp_f.toFixed(1);
             var humidity=jsonRow.humidity;
 
             time_e = cityRow.getElementsByClassName("time")[0];
