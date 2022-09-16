@@ -1,10 +1,12 @@
 import neatApi.finDataUpdater as finDataUpdater
 import neatApi.weatherUpdater as weatherUpdater
 
-fd = finDataUpdater.finDataUpdater()
+BASEURL = "https://www.takushi.us/"
+
+fd = finDataUpdater.finDataUpdater(BASEURL)
 fd.update()
 
-w = weatherUpdater.weatherUpdater()
+w = weatherUpdater.weatherUpdater(BASEURL)
 w.update()
 
 print("done ")
