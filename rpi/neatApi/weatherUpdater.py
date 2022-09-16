@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 import json
 import os
 BASEURL_DEFAULT = "https://www.takushi.us/"
-BASEURL_DEFAULT = "http://localhost:8000/"
+# BASEURL_DEFAULT = "http://localhost:8000/"
 openWeatherApiKey = os.environ.get('openWeatherApiKey')
 SAVEDATA = True
 
@@ -28,8 +28,8 @@ class weatherUpdater():
         api_url += "&lon="+str(data_p['longitude'])
         response = requests.get(api_url)
         data = response.json()
-        print("data from API:")
-        printDict(data)
+        # print("data from API:")
+        # printDict(data)
 
         data_p['lastRefresh'] = datetime.now(timezone.utc).isoformat()
         data_p['tz_int']=data['timezone']
