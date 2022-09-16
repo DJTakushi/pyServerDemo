@@ -40,8 +40,11 @@ function applyTimes() {
   for (const time_e of timeClasses){
     const myTz = time_e.getAttribute("tz")
     if (myTz != null){
-      var d = new Date().toLocaleString("en-US", {timeZone: myTz,  hour12: false, hour: '2-digit', minute:'2-digit'});
-      time_e.innerHTML = d
+      var d = new Date((new Date().getTime())+1000*myTz)
+      // old style using timezone names.  OpenWeahter only supports seconds.
+      // var d_text = d.toLocaleString("en-US", {hour12: false, hour: '2-digit', minute:'2-digit'});
+      var d_text = d.toISOString().slice(11,16);//time in ISO format
+      time_e.innerHTML = d_text
     }
   }
   var refresh=1000;
@@ -61,13 +64,14 @@ async function updateCities(apiUrl) {
       for(const jsonRow of myJson){
           if (jsonRow.name == cityName){
             var timeZone = jsonRow.tz;
+            var timeZoneOffset = jsonRow.tz_int;
             var conditionIconLink = jsonRow.conditionIcon;
-            var temp_c=jsonRow.temp_c;
-            var temp_f=jsonRow.temp_f;
+            var temp_c=jsonRow.temp_c.toFixed(2);
+            var temp_f=jsonRow.temp_f.toFixed(2);
             var humidity=jsonRow.humidity;
 
             time_e = cityRow.getElementsByClassName("time")[0];
-            tzAtt = time_e.setAttribute("tz",timeZone);
+            tzAtt = time_e.setAttribute("tz",timeZoneOffset);
 
             conditionIcon_e = cityRow.getElementsByClassName("conditionIcon")[0];
             conditionIcon_e.src=conditionIconLink;
