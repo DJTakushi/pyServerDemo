@@ -19,3 +19,8 @@ Open Weather has also been selected as the weather data supplier.
 According to the pricing page ([https://openweathermap.org/price](https://openweathermap.org/price)), 60 calls/minute is in the Free tier.
 
 The Current Api docs are at [https://openweathermap.org/current](https://openweathermap.org/current)
+The Open Weather API Key must be stored on the system as an environemnt varaible named
+`openWeatherApiKey`.  This can be done in Linux with the command:
+```
+export openWeatherApiKey=YOUR_KEY
+```
