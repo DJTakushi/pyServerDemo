@@ -152,7 +152,9 @@ async function updateFin(apiUrl) {
       }
     }
     finDataTimeStamp = document.getElementById("finDataTimestamp");
-    finDataTimeStamp.innerHTML="Refreshed "+earliestTimestamp.toLocaleString();
+    var captionText = "Refreshed "+earliestTimestamp.toLocaleString();
+    captionText += " from <a href=\"https://pypi.org/project/yfinance/\" target=\"_blank\">yFinance</a> for novelty purposes only."
+    finDataTimeStamp.innerHTML=captionText
     var refresh=1000*60;
     mytime = setTimeout(updateFin,refresh,apiUrl);
 }
