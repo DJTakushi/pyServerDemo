@@ -91,7 +91,9 @@ async function updateCities(apiUrl) {
       }
     }
     finDataTimeStamp = document.getElementById("cityDataTimestamp");
-    finDataTimeStamp.innerHTML="Refreshed "+earliestTimestamp.toLocaleString();
+    var captionText = "Refreshed "+earliestTimestamp.toLocaleString()
+    captionText += " from <a href=\"https://openweathermap.org/api\">Open Weather Api</a>";
+    finDataTimeStamp.innerHTML=captionText;
     var refresh=1000*5;
     mytime = setTimeout(updateCities,refresh,apiUrl);
 }
