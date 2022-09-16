@@ -4,3 +4,4 @@ pyvenv.cfg
 
 # logged data
 data.json
+dataWeather.json
